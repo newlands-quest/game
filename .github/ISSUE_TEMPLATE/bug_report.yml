@@ -1,0 +1,45 @@
+name: "👾 Bug report"
+description: "Create a report to help us improve"
+labels: ["Type: Bug"]
+body:
+
+  - type: checkboxes
+    attributes:
+      label: "Is there an existing issue that is already proposing this?"
+      description: "Please search [here](https://github.com/newlands-quest/game/issues?q=is%3Aissue) to see if an issue already exists for the feature you are requesting"
+      options:
+        - label: "I have searched the existing issues"
+          required: true
+
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: "What is the expected behavior?"
+      description: "explain the expected behavior"
+      placeholder: "Describe the expected behavior..."
+
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: "What is the current behavior?"
+      description: "explain the current behavior"
+      placeholder: "Describe the current behavior..."
+
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: "Possible solutions"
+      description: "Describe the possible solutions"
+      placeholder: "Describe the possible solutions..."
+
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: "Steps to reproduce"
+      description: "Describe the steps to reproduce the behavior"
+      placeholder: "Describe the steps to reproduce the behavior..."
+
