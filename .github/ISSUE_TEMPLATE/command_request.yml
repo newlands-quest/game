@@ -1,0 +1,28 @@
+name: "🕹 Feature Request"
+description: "I want a new command"
+labels: ["Type: Enhancement"]
+body:
+
+  - type: checkboxes
+    attributes:
+      label: "Is there an existing issue that is already proposing this?"
+      description: "Please search [here](https://github.com/newlands-quest/game/issues?q=is%3Aissue) to see if an issue already exists for the feature you are requesting"
+      options:
+        - label: "I have searched the existing issues"
+          required: true
+
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: "What is the command you are requesting?"
+      description: "Please provide a description of the command you are requesting"
+      placeholder: "description of the command you are requesting..."
+
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: "What is the expected functionality of the command?"
+      description: "Please provide a description of the expected functionality of the command"
+      placeholder: "description of the expected functionality of the command..."
