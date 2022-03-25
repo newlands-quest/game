@@ -1,4 +1,4 @@
-name: "🕹 Feature Request"
+name: "🕹 Command Request"
 description: "I want a new command"
 labels: ["Type: Enhancement"]
 body:
@@ -26,3 +26,4 @@ body:
       label: "What is the expected functionality of the command?"
       description: "Please provide a description of the expected functionality of the command"
       placeholder: "description of the expected functionality of the command..."
+
