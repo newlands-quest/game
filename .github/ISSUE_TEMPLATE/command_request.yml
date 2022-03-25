@@ -27,3 +27,11 @@ body:
       description: "Please provide a description of the expected functionality of the command"
       placeholder: "description of the expected functionality of the command..."
 
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: "What is the trigger for the command?"
+      description: "Please provide a description of the trigger for the command"
+      placeholder: "description of the trigger for the command... Example: !do something @john"
+
