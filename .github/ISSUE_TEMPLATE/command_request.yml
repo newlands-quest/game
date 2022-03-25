@@ -32,6 +32,5 @@ body:
       required: true
     attributes:
       label: "What is the trigger for the command?"
-      description: "Please provide a description of the trigger for the command"
-      placeholder: "description of the trigger for the command... Example: !do something @john"
+      placeholder: "Specify how you would use the command... Example: !do something @john"
 
