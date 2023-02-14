@@ -5,7 +5,7 @@
             "type": "node",
             "request": "launch",
             "name": "Project Debugging",
-            "program": "${workspaceFolder}\\src\\Main.ts",
+            "program": "${workspaceFolder}/src/Main.ts",
             "skipFiles": [
                 "<node_internals>/**"
             ],

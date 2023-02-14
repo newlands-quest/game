@@ -6,7 +6,7 @@
 			"script": "dev",
 			"problemMatcher": [],
 			"label": "npm: dev",
-			"detail": "cross-env NODE_ENV=development ts-node -r tsconfig-paths/register ./src/Main.ts"
+			"detail": "cross-env NODE_ENV=debug ts-node -r tsconfig-paths/register ./src/Main.ts"
 		}
 	]
 }
