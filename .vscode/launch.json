@@ -7,15 +7,15 @@
       "name": "Project Debugging",
       "program": "${workspaceFolder}/src/Main.ts",
       "skipFiles": [
-          "<node_internals>/**"
+        "<node_internals>/**"
       ],
       "preLaunchTask": "npm: build",
       "sourceMaps": true,
       "smartStep": true,
       "internalConsoleOptions": "openOnSessionStart",
-        "outFiles": [
-            "${workspaceFolder}/dist/**/*.js"
-        ],
+      "outFiles": [
+        "${workspaceFolder}/dist/**/*.js"
+      ],
       "envFile": "${workspaceFolder}/.env"
     }
   ]
