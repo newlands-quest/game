@@ -1,6 +1,7 @@
 import { WebSocket } from "uWebSockets.js";
 import { v4 as uuid } from "uuid";
 import Response from "../responses/Response";
+import UserData from "../types/UserData";
 
 /**
  * Representa una conexión websocket
@@ -11,7 +12,7 @@ export default class Connection {
   public readonly id = uuid();
 
   /** Socket de la conexión */
-  public readonly socket:WebSocket;
+  public readonly socket:WebSocket<UserData> & UserData;
 
   /** Respuestas pendientes de envío por overpressure */
   private pendingResponses:any[] = [];
@@ -26,7 +27,7 @@ export default class Connection {
    * Crea una nueva conexión
    * @param websocket Socket de la conexión
    */
-  constructor(websocket:WebSocket) {
+  constructor(websocket:WebSocket<UserData> & UserData) {
     this.socket = websocket;
   }
 

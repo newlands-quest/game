@@ -1,6 +1,6 @@
 export interface ConnectionHeaders {
   url:string;
-  authorization:string;
+  authorization:string|null;
 }
 
 /**

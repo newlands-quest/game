@@ -1,5 +1,6 @@
 import Connection from "./Connection";
 import { WebSocket } from "uWebSockets.js";
+import UserData from "../types/UserData";
 
 /**
  * Manager de conexiones websocket activas
@@ -12,7 +13,7 @@ export default class Connections {
    * Busca una conexión a partir de una instancia de WebSockets
    * @param socket Instancia de WebSockets
    */
-  private findBySocket(socket:WebSocket):Connection | null {
+  private findBySocket(socket:WebSocket<UserData>):Connection | null {
     let foundConnection:Connection | null = null;
     this.storage.forEach(thisConnection => foundConnection = thisConnection.socket === socket ? thisConnection : null);
     return foundConnection;
@@ -38,7 +39,7 @@ export default class Connections {
    * Obtiene una conexión a partir de una instancia de WebSockets
    * @param socket Instancia de WebSockets
    */
-  public get(socket:WebSocket):Connection | null;
+  public get(socket:WebSocket<UserData>):Connection | null;
   public get(key:any):Connection | null {
     if(typeof key === "string") return this.storage.get(key) || null;
     return this.findBySocket(key);
@@ -53,7 +54,7 @@ export default class Connections {
    * Comprueba si existe una conexión a partir de una instancia de WebSockets
    * @param socket Instancia de WebSockets
    */
-  public exists(socket:WebSocket):boolean;
+  public exists(socket:WebSocket<UserData>):boolean;
   public exists(key:any):boolean {
     if(typeof key === "string") return this.storage.has(key);
     else return this.findBySocket(key) !== null;
@@ -77,7 +78,7 @@ export default class Connections {
    * Elimina y cierra una conexión a partir de una instancia de WebSockets
    * @param socket Instancia de WebSockets
    */
-  public delete(socket:WebSocket):void;
+  public delete(socket:WebSocket<UserData>):void;
   public delete(key:any):void {
     const exists = this.exists(key);
     if(exists) {

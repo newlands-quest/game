@@ -7,19 +7,20 @@ import Message from "./messages/Message";
 import MessageHandler from "./MessageHandler";
 import ErrorResponse from "./responses/ErrorResponse";
 import Response from "./responses/Response";
+import UserData from "./types/UserData";
 
 /**
  * Un espacio es una ruta de conexión websocket con un comportamiento específico
  * @author Lottie <enzodiazdev@gmail.com>
  */
-export default class Space implements WebSocketBehavior {
+export default class Space implements WebSocketBehavior<UserData> {
   private jwt = JWT.getInstance();
   /** Lista de conexiones activas */
   private connections = new Connections();
   /** Endpoint de la conexión socket */
   public path:RecognizedString;
   /** Custom handler para mensajes de websockets */
-  public onRawMessage:((websocket:WebSocket, message:ArrayBuffer, _isBinary:boolean) => Promise<void>) | null = null;
+  public onRawMessage:((websocket:WebSocket<UserData>, message:ArrayBuffer, _isBinary:boolean) => Promise<void>) | null = null;
   /** Message handler */
   public messageHandler:MessageHandler | null;
   public maxPayloadLength = 16 * 1024;
@@ -60,8 +61,8 @@ export default class Space implements WebSocketBehavior {
     }, 50);
   };
 
-  public open = (websocket:WebSocket & Partial<ConnectionHeaders>):void => {
-    const connection = new Connection(websocket);
+  public open = (websocket:WebSocket<UserData> & Partial<ConnectionHeaders>):void => {
+    const connection = new Connection(websocket as WebSocket<UserData> & UserData);
     this.connections.add(connection);
 
     const connectingResponse = new Response().setEvent("connecting");
@@ -69,14 +70,14 @@ export default class Space implements WebSocketBehavior {
 
     if(websocket.authorization) {
       const token = this.jwt.verify(websocket.authorization);
-      if(!token) websocket.authorization = undefined;
+      if(!token) websocket.authorization = null;
     }
 
     const connectedResponse = new Response().setEvent("connected");
     connection.emit(connectedResponse);
   };
 
-  public message = async (websocket:WebSocket, message:ArrayBuffer, isBinary:boolean):Promise<void> => {
+  public message = async (websocket:WebSocket<UserData>, message:ArrayBuffer, isBinary:boolean):Promise<void> => {
     const connection = this.connections.get(websocket);
     if(!connection) return websocket.close();
 
@@ -104,7 +105,7 @@ export default class Space implements WebSocketBehavior {
     }
   };
 
-  public drain = (websocket:WebSocket):void => {
+  public drain = (websocket:WebSocket<UserData>):void => {
     if(websocket.getBufferedAmount() < 1024 * 1024) {
       const connection = this.connections.get(websocket);
       if(!connection) return websocket.close();
@@ -114,7 +115,7 @@ export default class Space implements WebSocketBehavior {
     }
   };
 
-  public close = (websocket:WebSocket, _code:number, _message:ArrayBuffer):void => {
+  public close = (websocket:WebSocket<UserData>, _code:number, _message:ArrayBuffer):void => {
     const connection = this.connections.get(websocket);
     if(!connection) return;
 
