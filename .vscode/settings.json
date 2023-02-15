@@ -1,0 +1,12 @@
+{
+  "editor.tabSize": 2, // REQUIRED
+  "editor.fontLigatures": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.inlineSuggest.enabled": true,
+  "files.eol": "\n", // REQUIRED
+  "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+  }
+}
