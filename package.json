@@ -1,9 +1,9 @@
 {
-  "name": "project-zf",
+  "name": "game",
   "version": "1.0.0",
   "description": "Tal vez sea algo",
   "main": "./dist/Main.js",
-  "author": "Zero Files",
+  "author": "New Lands Quest",
   "license": "MIT",
   "scripts": {
     "build": "tsc && tsc-alias",
@@ -12,13 +12,13 @@
     "dev": "cross-env NODE_ENV=local nodemon --watch './src' --exec 'ts-node' -r tsconfig-paths/register ./src/Main.ts",
     "test": "jest --config jest.config.ts"
   },
-  "homepage": "https://github.com/zero-files/project-zf#readme",
+  "homepage": "https://github.com/newlands-quest/game#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zero-files/project-zf.git"
+    "url": "git+https://github.com/newlands-quest/game.git"
   },
   "bugs": {
-    "url": "https://github.com/zero-files/project-zf/issues"
+    "url": "https://github.com/newlands-quest/game/issues"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
