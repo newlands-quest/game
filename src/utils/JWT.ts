@@ -32,11 +32,6 @@ export default class JWT {
   public verify(token:string):object | null {
     const parsedToken = token.replace("Bearer ", "");
 
-    return jwt.verify(parsedToken, this.secret, (error, decoded) => {
-      if(error) {
-        if(error.name === "TokenExpiredError") return null;
-        else return null;
-      } return decoded;
-    }) as unknown as object;
+    return jwt.verify(parsedToken, this.secret, (error, decoded) => error ? null : decoded) as unknown as object;
   }
 }
